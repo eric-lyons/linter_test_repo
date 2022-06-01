@@ -4,6 +4,7 @@ connection: "thelook"
 include: "/views/**/*.view"
 include: "/pdf_test.dashboard"
 include: "/pdf_test_2.dashboard"
+include: "/**/*.dashboard"
 
 datagroup: thelook_default_datagroup {
   sql_trigger: SELECT 1;;
