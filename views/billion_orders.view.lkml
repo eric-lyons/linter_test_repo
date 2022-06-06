@@ -21,4 +21,10 @@ view: billion_orders {
     type: count
     drill_fields: [orders.id]
   }
+
+  measure: case_statement {
+    type: number
+    sql: CASE WHEN ${order_price} < 1000 THEN "Costly" ELSE "cheap" END ;;
+  }
+
 }

@@ -20,6 +20,16 @@ view: order_items {
     sql: ${TABLE}.order_id ;;
   }
 
+  dimension: reference {
+    type: number
+    sql: ${order_id} ;;
+  }
+
+  dimension: concatenated {
+    type: string
+    sql: CONCAT(CAST(${TABLE}.inventory_item_id as CHAR),"This is a looooooooooooooooong chatacter testing for render errors.jdlaskdlkashdkjlashdkjlahsdkljhsklajshfkasheliwuehrliuewqyriluwegfdsbjknaskjdhiluwegruygfsdajhbjasbdn.wakhewlirugwekyufagsdjbjksankdjwehfgkeruygfekyasdkjbacskj.xcna;oishdiweguahrfsa;odp;k;aslkdpwa0isdulaewisfgdkcyhjgalsiuhsliqwytewuqyiuroaljsd.nhkasbfnc.kabwvekusydiluhlwaejshfbkndmnlaweufslygiudkhjbafwjhesdbfkndzlwweargilusdhlkjbfansddkjbhjvakeufslGIDbkjcnaelgfveuwglaisdhjkbfavgfilus>bjlcnx") ;;
+  }
+
   dimension_group: returned {
     type: time
     timeframes: [
@@ -37,6 +47,38 @@ view: order_items {
   dimension: sale_price {
     type: number
     sql: ${TABLE}.sale_price ;;
+  }
+
+  parameter: dynamic_field_selector {
+    type: unquoted
+    allowed_value: {
+      label: "Sum of ID"
+      value: "sum_of_id"
+    }
+    allowed_value: {
+      label: "Sum of Order ID"
+      value: "sum_of_order_id"
+    }
+  }
+
+  measure: sum_of_id {
+    type: sum
+    sql: ${id} ;;
+  }
+
+  measure: sum_of_order_id {
+    type: sum
+    sql: ${order_id} ;;
+  }
+
+  measure: dynamic_sum {
+    type: number
+    sql:
+    {% if dynamic_field_selector._parameter_value == 'sum_of_id' %}
+    ${sum_of_id}
+    {% else %}
+    ${sum_of_order_id}
+    {% endif %};;
   }
 
   measure: count {

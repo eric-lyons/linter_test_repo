@@ -35,6 +35,11 @@ view: flights {
     sql: ${TABLE}.dep_delay ;;
   }
 
+  dimension: concatenated {
+    type: string
+    sql: CONCAT(${TABLE}.cancelled,${TABLE}.carrier, "ashdaksjhdklasdnkj.nxckjashdliuagfliuAHSDKJSANZXKJN.ASKNDKSAJFGLJDSGVFJHBDSJKCBASKJBDKSAGFHADSFJKBCKJ.SANC.KNASZX.KJBZDKJBC") ;;
+  }
+
   dimension_group: dep {
     type: time
     timeframes: [

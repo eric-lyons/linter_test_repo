@@ -28,9 +28,11 @@ view: inventory_items {
   }
 
   dimension: product_id {
-    type: number
+    type: string
+    suggest_dimension: products.id_top_100
+    # suggest_explore: order_items
     # hidden: yes
-    sql: ${TABLE}.product_id ;;
+    sql: CAST(${TABLE}.product_id as CHAR) ;;
   }
 
   dimension_group: sold {

@@ -8,6 +8,11 @@ view: products {
     sql: ${TABLE}.id ;;
   }
 
+  dimension: id_top_100 {
+    type: string
+    sql: CASE WHEN ${TABLE}.id < 100 then CAST(${TABLE}.id as CHAR) ELSE null END ;;
+  }
+
   dimension: brand {
     type: string
     sql: ${TABLE}.brand ;;
