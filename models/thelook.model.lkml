@@ -1,6 +1,9 @@
 connection: "thelook"
 
 # include all the views
+
+
+
 include: "/views/**/*.view"
 include: "/pdf_test.dashboard"
 include: "/pdf_test_2.dashboard"

@@ -56,6 +56,15 @@ view: orders {
     sql: SUM(${id}) ;;
   }
 
+  measure: test1 {
+    type: number
+    sql: case
+    when ${id}='4182' then 10*(2*(2*${count})+5)
+    else 200*${count};;
+  }
+
+
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [

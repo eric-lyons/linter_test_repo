@@ -79,6 +79,7 @@ view: users {
       id,
       first_name,
       last_name,
+      age,
       events.count,
       orders.count,
       saralooker.count,
