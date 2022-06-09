@@ -104,6 +104,26 @@ view: orders {
     sql: SUM(${id}) ;;
   }
 
+  measure: count_by_year {
+    type: count
+    drill_fields: [created_month,count_by_month]
+  }
+
+  measure: count_by_month {
+    type: count
+    drill_fields: [created_week,count_by_week]
+  }
+
+  measure: count_by_week {
+    type: count
+    drill_fields: [created_date,count_by_day]
+  }
+
+  measure: count_by_day {
+    type: count
+    drill_fields: [created_time,count]
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
