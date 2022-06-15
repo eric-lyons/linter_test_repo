@@ -1,0 +1,23 @@
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Linter Run
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: rbob86/lookml-linter@v4
+    - run: |
+        echo "This is the workspace"
+        pwd
+        python -m linter.main config.example.yaml
+        
+

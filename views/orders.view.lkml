@@ -8,6 +8,11 @@ view: orders {
     sql: ${TABLE}.id ;;
   }
 
+  dimension: id_as_string {
+    type: string
+    sql: ${TABLE}.id ;;
+  }
+
   dimension_group: created {
     type: time
     timeframes: [
@@ -46,14 +51,84 @@ view: orders {
     }
   }
 
+  dimension: one_billion {
+    type: number
+    sql: 1000000 ;;
+  }
+
+  dimension: one_million {
+    type: number
+    sql: 1000 ;;
+  }
+
+  dimension: five_million {
+    type: number
+    sql: 5000 ;;
+  }
+
+  measure: total_clicks {
+    type: sum
+    sql: ${one_billion} ;;
+  }
+
+  measure: total_item_views {
+    type: sum
+    sql: ${five_million} ;;
+  }
+
+  measure: total_purchases {
+    type: sum
+    sql: ${one_million} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
   }
 
+  measure: count_with_html {
+    type: count
+    drill_fields: [detail*]
+    html:
+    {% if value > 10000 %}
+    <font color="darkgreen">{{ rendered_value }}</font>
+    {% elsif value > 5000 %}
+    <font color="goldenrod">{{ rendered_value }}</font>
+    {% else %}
+    <font color="darkred">{{ rendered_value }}</font>
+    {% endif %} ;;
+  }
+
   measure: sum_id {
     type: number
     sql: SUM(${id}) ;;
+  }
+
+  measure: count_by_year {
+    type: count
+    drill_fields: [created_month,count_by_month]
+  }
+
+  measure: count_by_month {
+    type: count
+    drill_fields: [created_week,count_by_week]
+  }
+
+  measure: count_by_week {
+    type: count
+    drill_fields: [created_date,count_by_day]
+  }
+
+  measure: count_by_day {
+    type: count
+    drill_fields: [created_time,count]
+  }
+
+  measure: test1 {
+    type: number
+    sql: case
+    when ${id}='4182' then 10*(2*(2*${count})+5)
+    else 200*${count};;
   }
 
   # ----- Sets of fields for drilling ------

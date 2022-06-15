@@ -7,6 +7,7 @@ view: account {
     type: number
     sql: ${TABLE}.id ;;
   }
+  #test
 
   dimension: age {
     type: number
