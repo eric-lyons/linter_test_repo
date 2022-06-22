@@ -14,8 +14,25 @@ persist_with: thelook_default_datagroup
 
 
 explore: imgsrc1onerroralert2 {}
+f
+afdsa
 
 explore: account {}
+
+# Place in `thelook` model
+explore: +account {
+  aggregate_table: rollup__age__created2_date {
+    query: {
+      dimensions: [age, created2_date]
+      measures: [count]
+      timezone: "America/New_York"
+    }
+
+    materialization: {
+      datagroup_trigger: thelook_default_datagroup
+    }
+  }
+}
 
 explore: billion_orders {
   join: orders {
