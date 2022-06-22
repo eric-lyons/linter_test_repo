@@ -86,6 +86,14 @@ view: orders {
     drill_fields: [detail*]
   }
 
+  measure: test {
+    type: number
+    sql: case when ${status} = "complete" then ${count} ELSE 0 End ;;
+    html: {{rendered_value}} <br> First line
+          <br> {{orders.count._value}}
+          <br> Second line {{orders.count._value}}</br>;;
+  }
+
   measure: count_with_html {
     type: count
     drill_fields: [detail*]
