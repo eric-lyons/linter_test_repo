@@ -30,7 +30,7 @@ view: inventory_items {
   dimension: product_id {
     type: string
     suggest_dimension: products.id_top_100
-    # suggest_explore: order_items
+    suggest_explore: order_items
     # hidden: yes
     sql: CAST(${TABLE}.product_id as CHAR) ;;
   }

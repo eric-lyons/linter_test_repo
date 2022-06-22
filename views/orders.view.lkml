@@ -112,6 +112,33 @@ view: orders {
     sql: SUM(${id}) ;;
   }
 
+  measure: count_by_year {
+    type: count
+    drill_fields: [created_month,count_by_month]
+  }
+
+  measure: count_by_month {
+    type: count
+    drill_fields: [created_week,count_by_week]
+  }
+
+  measure: count_by_week {
+    type: count
+    drill_fields: [created_date,count_by_day]
+  }
+
+  measure: count_by_day {
+    type: count
+    drill_fields: [created_time,count]
+  }
+
+  measure: test1 {
+    type: number
+    sql: case
+    when ${id}='4182' then 10*(2*(2*${count})+5)
+    else 200*${count};;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
