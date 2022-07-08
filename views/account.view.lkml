@@ -37,4 +37,5 @@ view: account {
     type: count
     drill_fields: [id, name]
   }
+  parameter: ttff {}
 }
