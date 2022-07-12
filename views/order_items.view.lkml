@@ -46,6 +46,8 @@ view: order_items {
 
   dimension: sale_price {
     type: number
+    html:
+    html: <a href="https://www.google.com/search?q={{value}}"> {{ value }} </a>;;
     sql: ${TABLE}.sale_price ;;
   }
 

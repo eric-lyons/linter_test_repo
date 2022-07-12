@@ -8,6 +8,7 @@ view: persons {
 
   dimension: name {
     type: string
+    html: <a href="https://www.google.com/search?q={{value}}"> {{ value }} </a>;;
     sql: ${TABLE}.Name ;;
   }
 

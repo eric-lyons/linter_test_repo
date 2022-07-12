@@ -15,6 +15,7 @@ view: products {
 
   dimension: brand {
     type: string
+
     sql: ${TABLE}.brand ;;
   }
 
@@ -48,8 +49,9 @@ view: products {
     sql: ${TABLE}.sku ;;
   }
 
-  measure: count {
-    type: count
+measure: count {
+
+   type: count
     drill_fields: [id, item_name, inventory_items.count]
   }
 }
