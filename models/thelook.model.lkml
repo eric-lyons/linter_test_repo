@@ -8,7 +8,7 @@ include: "/views/**/*.view"
 include: "/pdf_test.dashboard"
 include: "/pdf_test_2.dashboard"
 include: "/cooler_dashboard.dashboard"
-
+include: "/sql_runner_query.view.lkml"
 datagroup: thelook_default_datagroup {
   sql_trigger: SELECT 1;;
   max_cache_age: "1 hour"
@@ -20,6 +20,8 @@ persist_with: thelook_default_datagroup
 explore: imgsrc1onerroralert2 {}
 
 explore: account {}
+
+explore: sql_runner_query {}
 
 explore: billion_orders {
   join: orders {
