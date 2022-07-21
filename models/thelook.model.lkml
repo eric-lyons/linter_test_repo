@@ -9,6 +9,7 @@ include: "/pdf_test.dashboard"
 include: "/pdf_test_2.dashboard"
 include: "/cooler_dashboard.dashboard"
 include: "/sql_runner_query.view.lkml"
+include: "/sql_runner_query_totals.view.lkml"
 datagroup: thelook_default_datagroup {
   sql_trigger: SELECT 1;;
   max_cache_age: "5 minutes"
@@ -22,6 +23,8 @@ explore: imgsrc1onerroralert2 {}
 explore: account {}
 
 explore: sql_runner_query {}
+
+explore: sql_runner_query_totals {}
 
 explore: billion_orders {
   join: orders {
