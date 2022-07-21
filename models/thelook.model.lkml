@@ -11,7 +11,7 @@ include: "/cooler_dashboard.dashboard"
 include: "/sql_runner_query.view.lkml"
 datagroup: thelook_default_datagroup {
   sql_trigger: SELECT 1;;
-  max_cache_age: "1 hour"
+  max_cache_age: "5 minutes"
 }
 #test
 persist_with: thelook_default_datagroup
