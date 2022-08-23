@@ -58,7 +58,7 @@ view: orders {
     type: string
   }
   filter: testing3{
-    sql: (select status from orders WHERE {% condition %} status {% endcondition %} and status = 'complete' ) ;;
+    sql: (select ${status} from orders WHERE {% condition %} status {% endcondition %} and status = 'complete' ) ;;
     type: string
   }
 
