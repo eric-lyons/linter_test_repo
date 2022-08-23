@@ -46,14 +46,32 @@ view: orders {
     }
   }
 
+
+   filter: testing1{
+    sql: (select ${status} from orders) ;;
+    type: string
+  }
+
+
+  filter: testing2{
+    sql: (select ${status} from orders WHERE {% condition %} status {% endcondition %} and user_id = '1' ) ;;
+    type: string
+  }
+  filter: testing3{
+    sql: (select status from orders WHERE {% condition %} status {% endcondition %} and status = 'complete' ) ;;
+    type: string
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
   }
-
-  measure: sum_id {
+  measure: test {
     type: number
-    sql: SUM(${id}) ;;
+    sql: case when ${status} = "complete" then ${count} ELSE 0 End ;;
+    html: {{rendered_value}} <br> First line
+    <br> {{orders.count._value}}
+    <br> Second line {{orders.count._value}}</br>;;
   }
 
   # ----- Sets of fields for drilling ------

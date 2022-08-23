@@ -16,6 +16,7 @@ persist_with: thelook_default_datagroup
 explore: imgsrc1onerroralert2 {}
 
 explore: account {}
+explore: sql_runner_query {}
 
 explore: billion_orders {
   join: orders {
