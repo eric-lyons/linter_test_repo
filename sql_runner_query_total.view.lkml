@@ -24,7 +24,7 @@ view: sql_runner_query_total {
   measure: count {
     type: count
     drill_fields: [detail*]
-  }
+  } 
 
   dimension: totals {
     type: number
